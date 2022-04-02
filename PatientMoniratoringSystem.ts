@@ -74,11 +74,25 @@ class Caregiver implements IObserver {
   }
 }
 
-const MSystem = new MonitoringSystem(37,90,)
+class Nurse implements IObserver {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  notify(): void {
+    console.log(`${this.name}, check the monitoring system!`);
+  }
+}
+const MSystem = new MonitoringSystem(37,90,100,130,20)
 const john = new Patient('John')
 const jack = new Patient('Jack')
+const ahmed = new Doctor('ahmed')
+const nodhal = new Caregiver('nodhal')
+const amira=new Nurse ("Amira")
 
 MSystem.addObserver(john)
 MSystem.addObserver(jack)
-
+MSystem.addObserver(amira)
+MSystem.addObserver(nodhal)
+MSystem.addObserver(ahmed)
 MSystem.notifyHospitalstuff()
